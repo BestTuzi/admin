@@ -1,0 +1,121 @@
+<html xmlns:th="http://www.thymelreaf.org">
+<head>
+    <title>Title</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!--最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-*.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">xx大学信息管理系统</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="menu.jsp">主页<span class="sr-only">(current)</span></a></li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/teacher/findAll}">查看教师信息</a></li>
+                        <li><a th:href="@{/teacher/toAdd}">新增教师</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学生管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/student/findAll}">查看学生信息</a></li>
+                        <li><a th:href="@{/student/toAdd}">新增学生</a></li>
+                        <li><a th:href="@{/student/scores}">查看成绩</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">部门管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/depart/findAll}">查看部门信息</a></li>
+                        <li><a th:href="@{/depart/getDepartTeachers}">部门人员管理</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">职工管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/emp/findAll}">查看职工信息</a></li>
+                        <li><a th:href="@{/emp/toAdd}">添加职工</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" action="${pageContext.request.contextPath}/teacher/findByName" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span th:text="|欢迎您:${session.user.userName}|"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人中心</a></li>
+                        <li><a th:href="@{/exit}">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="col-xs-12 col-md-8 col-md-offset-1">
+    <form class="form-horizontal" role="form"  action="#"  th:action="@{/emp/add}"  method="post">
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" placeholder="请输入名字">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="sex" placeholder="请输入性别">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">籍贯</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="address"  placeholder="请输入籍贯">
+            </div>
+        </div><div class="form-group">
+        <label class="col-sm-2 control-label">职位</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control"   name="prof"  placeholder="请输入职位">
+        </div>
+    </div>
+        <div class="form-group" align="center">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">添加</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
