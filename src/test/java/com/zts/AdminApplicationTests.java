@@ -27,5 +27,9 @@ class AdminApplicationTests {
     void contextLoads() {
      teachersService.updateDepartByDepartId(5,"中文系" );
     }
+    @Test
+    void commit01(){
+        System.out.println("第二次提交");
+    }
 
 }
