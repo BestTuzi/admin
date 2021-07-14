@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class BranchTest01 {
 
-    void BranchTest01(){
+    void BranchTest01() {
         System.out.println("left01分支-----被创建");
     }
 
